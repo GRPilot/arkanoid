@@ -11,7 +11,15 @@ config_version=4
 [application]
 
 config/name="arkanoid"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/Menus/MainMenu/MainMenu.tscn"
+
+[autoload]
+
+SoundManager="res://prefubs/SoundManager.tscn"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
 
 [physics]
 
