@@ -8,6 +8,10 @@ public class Ball : RigidBody2D {
     public override void _Ready() {
     }
 
+    public void SetForceDirection(Vector2 force) {
+        AppliedForce = force * speed;
+    }
+
     public override void _PhysicsProcess(float delta) {
         base._PhysicsProcess(delta);
     }
