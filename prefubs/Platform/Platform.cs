@@ -4,7 +4,6 @@ using System;
 public class Platform : RigidBody2D {
     [Export] public float smooth = 2000f;
     [Export] public float maxVelocity = 500.0f;
-    private Vector2 nullVector = new Vector2(0, 0);
 
     public override void _PhysicsProcess(float delta) {
         Vector2 impulse = new Vector2();
@@ -14,7 +13,7 @@ public class Platform : RigidBody2D {
         if(Input.IsActionPressed("ui_right")) {
             impulse.x = smooth * Mass * delta;
         }
-        ApplyImpulse(nullVector, impulse);
+        ApplyCentralImpulse(impulse);
         NormalizeVelocity();
     }
 
