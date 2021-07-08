@@ -19,12 +19,7 @@ public class GameScene : Node2D {
             Ball ball = GetNode<Ball>("Ball");
             Vector2 force = new Vector2(RandomFloat(-1.0f, 1.0f), RandomFloat(-1.0f, 1.0f));
             ball.SetForceDirection(force);
-            GD.Print($"Force: {ball.AppliedForce.ToString()}");
-
         }
-    }
-    public override void _Process(float delta) {
-     
     }
 
     private float RandomFloat(float from, float to) {
