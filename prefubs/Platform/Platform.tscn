@@ -4,15 +4,13 @@
 [ext_resource path="res://prefubs/Platform/Platform.cs" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 64 )
 
-[node name="Platform" type="RigidBody2D"]
-mode = 1
-mass = 2.0
+[node name="Platform" type="StaticBody2D"]
 physics_material_override = SubResource( 1 )
-gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
