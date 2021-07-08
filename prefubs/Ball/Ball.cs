@@ -18,21 +18,23 @@ public class Ball : RigidBody2D {
 
     public override void _PhysicsProcess(float delta) {
         base._PhysicsProcess(delta);
+        force *= GetForceDirection(GetViewportRect().Size);
+        LinearVelocity = force * Mass * speed;
+    }
 
-        var screensize = GetViewportRect().Size;
+    private Vector2 GetForceDirection(Vector2 size) {
         var position = sprite.GlobalPosition;
         var scale = collisionShape.Scale.x;
         var radius = (sprite.Texture.GetWidth() * scale) / 2.0f;
 
         Vector2 forceDirection = new Vector2(1, 1);
-        if(position.x + radius >= screensize.x || position.x - radius <= 0) {
+        if(position.x + radius >= size.x || position.x - radius <= 0) {
             forceDirection.x *= -1;
         }
-        if(position.y + radius >= screensize.y || position.y - radius <= 0) {
+        if(position.y + radius >= size.y || position.y - radius <= 0) {
             forceDirection.y *= -1;
         }
-        force *= forceDirection;
-        LinearVelocity = force * Mass * speed;
+        return forceDirection;
     }
 
 }
