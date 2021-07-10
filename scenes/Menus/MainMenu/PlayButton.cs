@@ -8,6 +8,6 @@ public class PlayButton : SoundButton {
     }
 
     public void OnPressed() {
-
+        GetNode<Tools>("/root/Tools").ChangeScene("res://scenes/GameScene/GameScene.tscn");
     }
 }

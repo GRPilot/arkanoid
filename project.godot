@@ -16,6 +16,7 @@ run/main_scene="res://scenes/Menus/MainMenu/MainMenu.tscn"
 [autoload]
 
 SoundManager="res://prefubs/SoundManager.tscn"
+Tools="*res://scripts/Tools.cs"
 
 [debug]
 
