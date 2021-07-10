@@ -17,4 +17,3 @@ position = Vector2( 528, 584 )
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 528, 536 )
-speed = 250.0

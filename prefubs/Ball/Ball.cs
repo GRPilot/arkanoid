@@ -1,25 +1,31 @@
 using Godot;
 using System;
 
-public class Ball : RigidBody2D {
+public class Ball : KinematicBody2D {
     private Sprite sprite;
     private CollisionShape2D collisionShape;
 
-    [Export] public float speed = 500;
+    [Export] public float speed = 100;
     [Export] public Vector2 force = new Vector2();
 
     public override void _Ready() {
         sprite = GetNode<Sprite>("Sprite");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
     }
+
     public void SetForceDirection(Vector2 force) {
         this.force = force;
     }
 
     public override void _PhysicsProcess(float delta) {
-        base._PhysicsProcess(delta);
+        speed += delta;
         force *= GetForceDirection(GetViewportRect().Size);
-        LinearVelocity = force * Mass * speed;
+        force = force.Normalized();
+        var collision = MoveAndCollide(force * speed * delta, true, true, true);
+        if (collision != null) {
+            force = force.Bounce(collision.Normal);
+        }
+        MoveAndCollide(force * speed * delta);
     }
 
     private Vector2 GetForceDirection(Vector2 size) {
